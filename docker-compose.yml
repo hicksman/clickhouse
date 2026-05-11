@@ -1,0 +1,23 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse-test
+    user: "1000:1000" # Запуск от вашего текущего пользователя в Ubuntu
+    environment:
+      - CLICKHOUSE_USER=user1
+      - CLICKHOUSE_PASSWORD=password
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    volumes:
+      - /home/hicks/ClickHouse/clickhouse-data:/var/lib/clickhouse
+    networks:
+      - host1
+
+networks:
+  host1:
+    external: true
