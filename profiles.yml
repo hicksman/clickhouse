@@ -1,0 +1,11 @@
+clickhouse_imdb:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: imdb_dbt
+      host: clickhouse-test
+      port: 8123
+      user: user1
+      password: 'password'
+      secure: False
